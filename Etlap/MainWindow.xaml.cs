@@ -21,7 +21,6 @@ namespace Etlap
             InitializeComponent();
 
             EtlapTable.ItemsSource = EtelService.GetEtlap();
-            //EtlapTable.ItemsSource = EtlapService.GetProducts().Select(x => new { x.Nev, x.Kategoria, x.Ar });
         }
 
         private void AddNew_Click(object sender, RoutedEventArgs e)
@@ -82,9 +81,14 @@ namespace Etlap
             }
             if (int.TryParse(SzazalekosEmAdat.Text, out int szazalek))
             {
-                if (szazalek < 0)
+                if (szazalek < 5)
                 {
-                    MessageBox.Show("A százalék nem lehet negatív!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("A százalék nem lehet 5-nél kisebb!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                else if (szazalek > 50)
+                {
+                    MessageBox.Show("A százalék nem lehet 50-nél nagyobb!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
             }
@@ -145,9 +149,14 @@ namespace Etlap
             }
             if (int.TryParse(FixEmAdat.Text, out int fix))
             {
-                if (fix < 0)
+                if (fix < 50)
                 {
-                    MessageBox.Show("A fix összeg nem lehet negatív!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("A fix összeg nem lehet 50-nél kisebb!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                else if (fix > 3000)
+                {
+                    MessageBox.Show("A fix összeg nem lehet 3000-nél nagyobb!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
             }
