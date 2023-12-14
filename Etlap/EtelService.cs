@@ -9,6 +9,7 @@ namespace Etlap
 {
     internal static class EtelService
     {
+        // Én "root" jelszót használok, de lehet, hogy nálad más a jelszó vagy nincs jelszó
         static MySqlConnection connection = new MySqlConnection("server=localhost;user=root;database=etlapdb;port=3306;password=root");
 
         public static List<Etel> GetEtlap()
