@@ -46,7 +46,10 @@
             Grid.Row="1"
             Grid.Column="1"
             HorizontalAlignment="Stretch"
-            VerticalAlignment="Center" />
+            VerticalAlignment="Stretch"
+            AcceptsReturn="True"
+            TextWrapping="Wrap"
+            VerticalScrollBarVisibility="Visible" />
 
         <Label
             Grid.Row="2"
