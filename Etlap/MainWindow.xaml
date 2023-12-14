@@ -1,12 +1,77 @@
-﻿<Window x:Class="Etlap.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Etlap"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+﻿<Window
+    x:Class="Etlap.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Etlap"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <DockPanel>
 
-    </Grid>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+            <Button
+                x:Name="AddNew"
+                Width="100"
+                Click="AddNew_Click"
+                Content="Új felvétele" />
+            <Button
+                x:Name="Delete"
+                Width="100"
+                Click="Delete_Click"
+                Content="Törölés" />
+        </StackPanel>
+        <StackPanel Orientation="Vertical">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+
+                <Label Content="Százalékos emelés:" />
+                <TextBox
+                    x:Name="SzazalekosEmAdat"
+                    Grid.Row="0"
+                    Grid.Column="1" />
+                <Button
+                    x:Name="SzazalekosEmeles"
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Stretch"
+                    Click="SzazalekosEmeles_Click"
+                    Content="Emelés" />
+
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Content="Fix emelés:" />
+                <TextBox
+                    x:Name="FixEmAdat"
+                    Grid.Row="1"
+                    Grid.Column="1" />
+                <Button
+                    x:Name="FixEmeles"
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Stretch"
+                    Click="FixEmeles_Click"
+                    Content="Emelés" />
+            </Grid>
+            <DataGrid
+                x:Name="EtlapTable"
+                d:ItemsSource="{d:SampleData ItemCount=5}"
+                IsReadOnly="True"
+                SelectionChanged="EtlapTable_SelectionChanged" />
+            <Label x:Name="EtelLeiras" />
+        </StackPanel>
+    </DockPanel>
 </Window>
