@@ -24,7 +24,7 @@ namespace Etlap
         {
             InitializeComponent();
 
-            Kategoria.ItemsSource = EtelService.GetEtlap().Select(x => x.Kategoria).Distinct();
+            Kategoria.ItemsSource = new List<string>() { "előétel", "főétel", "desszert" };
         }
 
         private Etel GetInputs()
