@@ -21,7 +21,6 @@ namespace Etlap
             InitializeComponent();
 
             EtlapTable.ItemsSource = EtelService.GetEtlap();
-            //EtlapTable.ItemsSource = EtelService.GetEtlap().Select(x => new { x.Id, x.Nev, x.Leiras, x.Kategoria, x.Ar });
         }
 
         private void AddNew_Click(object sender, RoutedEventArgs e)

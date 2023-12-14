@@ -35,7 +35,7 @@
                     <RowDefinition Height="1*" />
                 </Grid.RowDefinitions>
 
-                <Label Content="Százalékos emelés:" />
+                <Label HorizontalAlignment="Right" Content="Százalékos emelés:" />
                 <TextBox
                     x:Name="SzazalekosEmAdat"
                     Grid.Row="0"
@@ -44,6 +44,7 @@
                     x:Name="SzazalekosEmeles"
                     Grid.Row="0"
                     Grid.Column="2"
+                    Width="100"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Stretch"
                     Click="SzazalekosEmeles_Click"
@@ -52,6 +53,7 @@
                 <Label
                     Grid.Row="1"
                     Grid.Column="0"
+                    HorizontalAlignment="Right"
                     Content="Fix emelés:" />
                 <TextBox
                     x:Name="FixEmAdat"
@@ -61,6 +63,7 @@
                     x:Name="FixEmeles"
                     Grid.Row="1"
                     Grid.Column="2"
+                    Width="100"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Stretch"
                     Click="FixEmeles_Click"
@@ -68,9 +71,16 @@
             </Grid>
             <DataGrid
                 x:Name="EtlapTable"
-                d:ItemsSource="{d:SampleData ItemCount=5}"
+                AutoGenerateColumns="False"
                 IsReadOnly="True"
-                SelectionChanged="EtlapTable_SelectionChanged" />
+                ItemsSource="{Binding Path=Collection}"
+                SelectionChanged="EtlapTable_SelectionChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Path=Nev}" Header="Név" />
+                    <DataGridTextColumn Binding="{Binding Path=Kategoria}" Header="Kategória" />
+                    <DataGridTextColumn Binding="{Binding Path=Ar}" Header="Ár (Ft)" />
+                </DataGrid.Columns>
+            </DataGrid>
             <Label x:Name="EtelLeiras" />
         </StackPanel>
     </DockPanel>
